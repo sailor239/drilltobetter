@@ -64,7 +64,8 @@ var dictChinesePhrase = [
     "大小", "多少", "上下", "左右", "深浅", "宽窄", "长短", "来去", "上学", "下班", "举手", "星期",
     "乌云", "云层", "天空", "大地", "树木", "说话", "山羊", "巴士", "米饭", "好吃", "剪刀",
     "朋友", "夜晚", "雨伞", "闪电", "灯光", "事情", "困难", "文具", "玩具", "吃饭", "汽车", "火车",
-    "打扫", "大象", "小猪", "小狗", "小猫", "鸟窝"
+    "打扫", "大象", "小猪", "小狗", "小猫", "鸟窝", "好人", "坏人", "白开水", "开门", "关门", "田地",
+    "我们", "你们", "他们", "她们", "它们"
 ];
 
 function getNewWord() {
@@ -84,9 +85,12 @@ function getNewWord() {
         testCharArr.push(testChar);
         // Get all the phrases containing the test character
         var tmpPhraseArr = dictChinesePhrase.filter(element => element.includes(testChar));
+        alert(tmpPhraseArr);
         // If there are more than one phrases containing the current test Chinese character, randomly output one
         var phraseIndex = Math.floor(Math.random() * tmpPhraseArr.length);
+        alert(phraseIndex);
         testPhrase = tmpPhraseArr[phraseIndex];
+        alert(testPhrase);
         // Split the test phrase into an array
         testPhraseList = testPhrase.split('');
         // pinyinArr = [];
