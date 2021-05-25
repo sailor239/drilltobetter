@@ -16,6 +16,7 @@ function startTest(){
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
+    document.getElementById('btnGetNewWord').focus();
     getNewWord();
 }
 function continueTest(){
@@ -26,6 +27,7 @@ function continueTest(){
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
+    document.getElementById('btnGetNewWord').focus();
     getNewWord();
 }
 function endTest(){
