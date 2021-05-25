@@ -65,7 +65,7 @@ var dictChinesePhrase = [
     "乌云", "云层", "天空", "大地", "树木", "说话", "山羊", "巴士", "米饭", "好吃", "剪刀",
     "朋友", "夜晚", "雨伞", "闪电", "灯光", "事情", "困难", "文具", "玩具", "吃饭", "汽车", "火车",
     "打扫", "大象", "小猪", "小狗", "小猫", "鸟窝", "好人", "坏人", "白开水", "开门", "关门", "田地",
-    "我们", "你们", "他们", "她们", "它们"
+    "我们", "你们", "他们", "她们", "它们", "早上"
 ];
 
 function getNewWord() {
@@ -76,6 +76,7 @@ function getNewWord() {
         document.getElementById('subInstruction').style.display = 'none';
         document.getElementById('btnGetNewWord').style.display = 'none';
         document.getElementById('btnEndTest').style.display = 'block';
+        document.getElementById('btnEndTest').focus();
     } else {
         // alert(JSON.stringify(charsToTest));
         // Randomly select a Chinese character from the dictinary
