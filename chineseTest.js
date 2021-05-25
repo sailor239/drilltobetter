@@ -1,5 +1,5 @@
 var dict = JSON.parse(window.dict);
-
+document.getElementById('btnStartTest').focus();
 document.getElementById('btnContinueTest').style.display = 'none';
 document.getElementById('subInstruction').style.display = 'none';
 document.getElementById('btnGetNewWord').style.display = 'none';
@@ -85,12 +85,9 @@ function getNewWord() {
         testCharArr.push(testChar);
         // Get all the phrases containing the test character
         var tmpPhraseArr = dictChinesePhrase.filter(element => element.includes(testChar));
-        alert(tmpPhraseArr);
         // If there are more than one phrases containing the current test Chinese character, randomly output one
         var phraseIndex = Math.floor(Math.random() * tmpPhraseArr.length);
-        alert(phraseIndex);
         testPhrase = tmpPhraseArr[phraseIndex];
-        alert(testPhrase);
         // Split the test phrase into an array
         testPhraseList = testPhrase.split('');
         // pinyinArr = [];
