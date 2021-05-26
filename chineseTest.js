@@ -9,30 +9,28 @@ document.getElementById('inputArea').style.display = 'none';
 
 var canvas = new handwriting.Canvas(document.getElementById('canvas'), 3);
 var width = document.getElementById("instruction").clientWidth;
-canvas.cxt.canvas.width  = width < 400 ? width : 400;
-canvas.cxt.canvas.height = width < 400 ? width : 400;
+canvas.cxt.canvas.width  = width < 200 ? width : 200;
+canvas.cxt.canvas.height = width < 200 ? width : 200;
 canvas.setCallBack(function(data, err) {
     if (err) {
         throw err;
     } else {
         var answer = document.getElementById('answer').innerHTML;
+        var result = document.getElementById("result");
         if (data[0] == answer) {
-            document.getElementById("result").innerHTML = `<span style="color: blue">Good job!</span> The answer is: <span style="color: blue">${answer}</span>`;
+            result.innerHTML = `<span style="color: blue">Good job!</span> The answer is: <span style="color: blue">${answer}</span>`;
         } else {
-            document.getElementById("result").innerHTML = `<span style="color: red">Wrong...</span> Wanna try again?`;
+            result.innerHTML = `<span style="color: red">Wrong...</span> Wanna try again?`;
+            setTimeout(function () {
+                result.innerHTML = '';
+            }, 1500);
+            setTimeout(function () {
+                document.getElementById("erase").click();
+            }, 2000);
         }
     }
 });
 canvas.set_Undo_Redo(true, true);
-var penSize = document.getElementById("penSize");
-penSize.addEventListener("mousemove", function() {
-    document.getElementById("lineWidth").innerHTML = penSize.value;
-});
-penSize.addEventListener("change", function(){
-    canvas.setLineWidth(penSize.value);
-});
-
-
 
 function startTest(){
     var resultSummary = "";
@@ -99,6 +97,8 @@ var dictChinesePhrase = [
 ];
 
 function getNewWord() {
+    document.getElementById("erase").click();
+    document.getElementById("result").innerHTML = '';
     var outputStr = '';
     // Check if there is any character left for test
     if (charsToTest.length == 0) {

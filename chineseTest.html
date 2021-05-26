@@ -51,31 +51,36 @@
         <h3 style="padding: 20px 20px; margin-bottom: 50px" id="chineseTest"></h3>
 
 
-        <div id="inputArea">
-            PenSize <span id="lineWidth">3</span>
-            <input type="range" id="penSize" min="1" max="30" value="3">
-            <br>
-            <canvas id="canvas" width="400" height="400" style="border: 2px solid; cursor: crosshair;"></canvas>
-            <div class="btn-group-vertical btn-group-lg" style="margin: auto; float: right;">
-                <button class="btn btn-danger" onclick="canvas.erase();">Erase</button>
-                <button class="btn btn-primary" onclick="
+        <div id="inputArea" style="text-align: center">
+            <div class="btn-group" role="group">
+                <button id="btnCheck" class="btn btn-primary btn-lg" onclick="
                     canvas.setOptions({language: 'zh_TW'});
                     canvas.recognize();
                     ">
-                    Send
+                    Check
                 </button>
-                <button class="btn btn-warning" onclick="canvas.undo()">Undo</button>
-                <button class="btn btn-warning" onclick="canvas.redo()">Redo</button>
             </div>
-            <br><br>
+            <div class="btn-group" role="group">
+                <button id="btnGetNewWord" class="btn btn-success btn-lg" onclick="getNewWord()">Next</button>
+            </div>
+            <canvas id="canvas" width="200" height="200"></canvas>
+
+            <br>
+            <div class="btn-group" role="group">
+                <button id="erase" class="btn btn-danger" onclick="canvas.erase();">Erase</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button class="btn btn-light" onclick="canvas.undo()">Undo</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button class="btn btn-light" onclick="canvas.redo()">Redo</button>
+            </div>
             <h2><span id="result"></span></h2>
-            <br><br>
+            <br>
         </div>
 
-        <div class="wrapper">
-            <button style="margin: auto;" id="btnGetNewWord" class="btn btn-primary btn-lg" onclick="getNewWord()">Next</button>
-            <br><br>
-            <button style="margin: auto;" id="btnEndTest" class="btn btn-danger btn-lg" onclick="endTest()">End the test</button>
+        <div class="btn-group" role="group">
+            <button style="margin: auto;" id="btnEndTest" class="btn btn-danger btn-md" onclick="endTest()">End the test</button>
         </div>
 
         <div id="answer" style="display: none"></div>

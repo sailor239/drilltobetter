@@ -1,8 +1,25 @@
+#btnCheck {
+    margin-right: 40px;
+}
 
+#btnEndTest {
+    position: fixed;
+    top: 80px;
+    right: 0px;
+}
 
-.btn-group-vertical > button{
-    margin-bottom:10px;
-    border-radius:10px !important;
+#canvas {
+    border: 2px solid;
+    cursor: crosshair;
+    display: block;
+    margin:auto;
+}
+
+.btn-group > button{
+    display: inline-block;
+    margin-bottom: 10px;
+    border-radius: 20px !important;
+    text-align: center;
 }
 
 .container {
