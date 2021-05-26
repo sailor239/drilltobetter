@@ -40,15 +40,15 @@
             </div>
         </nav>
 
-        <h1 style="padding-top:20px; padding-bottom: 20px;" id="instruction">Let's test your Chinese Writing!</h1>
-        <div class="wrapper">
-            <button style="margin: auto;" id="btnContinueTest" class="btn btn-warning btn-lg" onclick="continueTest()">Continue?</button>
-            <br><br>
-            <button style="margin: auto;" id="btnStartTest" class="btn btn-info btn-lg" onclick="startTest()">Start</button>
-            <br><br>
+        <h1 style="padding-top:20px;" id="instruction">Let's test your Chinese Writing!</h1>
+        <div class="btn-group" role="group">
+            <button id="btnContinueTest" class="btn btn-warning btn-lg" onclick="continueTest()">Continue?</button>
         </div>
-        <h4 style="padding-bottom: 30px;" id="subInstruction">Write the <span id="charToTest"> red </span>character in Chinese...</h4>
-        <h3 style="padding: 20px 20px; margin-bottom: 50px" id="chineseTest"></h3>
+        <div class="btn-group" role="group">
+            <button id="btnStartTest" class="btn btn-info btn-lg" onclick="startTest()">Start</button>
+        </div>
+
+        <h3 style="padding: 10px 10px;" id="chineseTest"></h3><br>
 
 
         <div id="inputArea" style="text-align: center">
@@ -65,22 +65,21 @@
             </div>
             <canvas id="canvas" width="200" height="200"></canvas>
 
-            <br>
             <div class="btn-group" role="group">
                 <button id="erase" class="btn btn-danger" onclick="canvas.erase();">Erase</button>
             </div>
-            <div class="btn-group" role="group">
+            <div id="undo" class="btn-group" role="group">
                 <button class="btn btn-light" onclick="canvas.undo()">Undo</button>
             </div>
-            <div class="btn-group" role="group">
+            <div id="redo" class="btn-group" role="group">
                 <button class="btn btn-light" onclick="canvas.redo()">Redo</button>
             </div>
-            <h2><span id="result"></span></h2>
+            <h4><span id="result"></span></h4>
             <br>
         </div>
 
         <div class="btn-group" role="group">
-            <button style="margin: auto;" id="btnEndTest" class="btn btn-danger btn-md" onclick="endTest()">End the test</button>
+            <button id="btnEndTest" class="btn btn-dark btn-lg" onclick="endTest()">End the test</button>
         </div>
 
         <div id="answer" style="display: none"></div>

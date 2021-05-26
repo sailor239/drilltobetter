@@ -1,7 +1,7 @@
 var dict = JSON.parse(window.dict);
 document.getElementById('btnStartTest').focus();
 document.getElementById('btnContinueTest').style.display = 'none';
-document.getElementById('subInstruction').style.display = 'none';
+// document.getElementById('subInstruction').style.display = 'none';
 document.getElementById('btnGetNewWord').style.display = 'none';
 document.getElementById('chineseTest').style.display = 'none';
 document.getElementById('btnEndTest').style.display = 'none';
@@ -18,7 +18,7 @@ canvas.setCallBack(function(data, err) {
         var answer = document.getElementById('answer').innerHTML;
         var result = document.getElementById("result");
         if (data[0] == answer) {
-            result.innerHTML = `<span style="color: blue">Good job!</span> The answer is: <span style="color: blue">${answer}</span>`;
+            result.innerHTML = `<span style="color: green">Good job!</span> The answer is: <h2><span style="color: green">${answer}</span></h2>`;
         } else {
             result.innerHTML = `<span style="color: red">Wrong...</span> Wanna try again?`;
             setTimeout(function () {
@@ -36,10 +36,10 @@ function startTest(){
     var resultSummary = "";
     testCharArr = [];
     charsToTest = dict.slice();
-    document.getElementById('instruction').style.display = 'none';
+    document.getElementById('instruction').innerHTML = 'Write the <span id="charToTest"> red </span>character in Chinese';
     document.getElementById('btnStartTest').style.display = 'none';
     document.getElementById('btnContinueTest').style.display = 'none';
-    document.getElementById('subInstruction').style.display = 'block';
+    // document.getElementById('subInstruction').style.display = 'block';
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
@@ -47,10 +47,10 @@ function startTest(){
     getNewWord();
 }
 function continueTest(){
-    document.getElementById('instruction').style.display = 'none';
+    document.getElementById('instruction').innerHTML = 'Write the <span id="charToTest"> red </span>character in Chinese';
     document.getElementById('btnStartTest').style.display = 'none';
     document.getElementById('btnContinueTest').style.display = 'none';
-    document.getElementById('subInstruction').style.display = 'block';
+    // document.getElementById('subInstruction').style.display = 'block';
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
@@ -61,7 +61,7 @@ function endTest(){
     btnStartTest.innerHTML = "Re-Start?";
     instruction.innerHTML = resultSummary;
     document.getElementById('instruction').style.display = 'block';
-    document.getElementById('subInstruction').style.display = 'none';
+    // document.getElementById('subInstruction').style.display = 'none';
     document.getElementById('chineseTest').style.display = 'none';
     document.getElementById('btnGetNewWord').style.display = 'none';
     document.getElementById('btnEndTest').style.display = 'none';
@@ -103,7 +103,7 @@ function getNewWord() {
     // Check if there is any character left for test
     if (charsToTest.length == 0) {
         outputStr = 'Test done!';
-        document.getElementById('subInstruction').style.display = 'none';
+        // document.getElementById('subInstruction').style.display = 'none';
         document.getElementById('btnGetNewWord').style.display = 'none';
         document.getElementById('btnEndTest').style.display = 'block';
         document.getElementById('btnEndTest').focus();
@@ -137,7 +137,7 @@ function getNewWord() {
         outputStr = testCharArr.length + '. ' + outputStr;
         // Remove the tested Chienese character from the array of potential test characters
         charsToTest = charsToTest.filter((obj) => obj.char != testChar);
-        resultSummary = "Congratulations!<br><br>You finished:<br><br>" + testCharArr;
+        resultSummary = `Congratulations!<br>You finished:<br>${testCharArr}`;
     }
     chineseTest.innerHTML = outputStr;
 }

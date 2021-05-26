@@ -2,17 +2,18 @@
     margin-right: 40px;
 }
 
-#btnEndTest {
-    position: fixed;
-    top: 80px;
-    right: 0px;
+#btnStartTest, #btnContinueTest {
+    padding-left: 50px;
+    padding-right: 50px;
 }
+
 
 #canvas {
     border: 2px solid;
     cursor: crosshair;
     display: block;
-    margin:auto;
+    margin: auto;
+    margin-bottom: 10px;
 }
 
 .btn-group > button{
