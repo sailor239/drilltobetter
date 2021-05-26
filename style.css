@@ -1,9 +1,15 @@
+
+
+.btn-group-vertical > button{
+    margin-bottom:10px;
+    border-radius:10px !important;
+}
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 body {
     background-color: #e7e7e7;

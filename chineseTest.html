@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png">
     <script type="text/javascript" src="dictionary.json"></script>
+    <script type="text/javascript" src="handwriting.canvas.js"></script>
 </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a href="#" class="navbar-brand">
-                <img src="logo.svg" alt="reserved" width="32" height="32" href="" style="display: inline-block;">
+            <a href="index.html" class="navbar-brand">
+                <img src="logo.svg" alt="reserved" width="32" height="32" href="index.html" style="display: inline-block;">
                 Drill to Better
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -39,21 +40,47 @@
             </div>
         </nav>
 
-        <h1 style="padding-top:20px; padding-bottom: 50px;" id="instruction">Let's test your Chinese Writing!</h1>
+        <h1 style="padding-top:20px; padding-bottom: 20px;" id="instruction">Let's test your Chinese Writing!</h1>
         <div class="wrapper">
             <button style="margin: auto;" id="btnContinueTest" class="btn btn-warning btn-lg" onclick="continueTest()">Continue?</button>
             <br><br>
             <button style="margin: auto;" id="btnStartTest" class="btn btn-info btn-lg" onclick="startTest()">Start</button>
+            <br><br>
         </div>
-            <h4 style="padding-bottom: 30px;" id="subInstruction">Write the <span id="charToTest"> red </span>character in Chinese...</h4>
-            <h3 style="padding: 20px 20px; margin-bottom: 50px" id="chineseTest"></h3>
+        <h4 style="padding-bottom: 30px;" id="subInstruction">Write the <span id="charToTest"> red </span>character in Chinese...</h4>
+        <h3 style="padding: 20px 20px; margin-bottom: 50px" id="chineseTest"></h3>
+
+
+        <div id="inputArea">
+            PenSize <span id="lineWidth">3</span>
+            <input type="range" id="penSize" min="1" max="30" value="3">
+            <br>
+            <canvas id="canvas" width="400" height="400" style="border: 2px solid; cursor: crosshair;"></canvas>
+            <div class="btn-group-vertical btn-group-lg" style="margin: auto; float: right;">
+                <button class="btn btn-danger" onclick="canvas.erase();">Erase</button>
+                <button class="btn btn-primary" onclick="
+                    canvas.setOptions({language: 'zh_TW'});
+                    canvas.recognize();
+                    ">
+                    Send
+                </button>
+                <button class="btn btn-warning" onclick="canvas.undo()">Undo</button>
+                <button class="btn btn-warning" onclick="canvas.redo()">Redo</button>
+            </div>
+            <br><br>
+            <h2><span id="result"></span></h2>
+            <br><br>
+        </div>
+
         <div class="wrapper">
             <button style="margin: auto;" id="btnGetNewWord" class="btn btn-primary btn-lg" onclick="getNewWord()">Next</button>
             <br><br>
             <button style="margin: auto;" id="btnEndTest" class="btn btn-danger btn-lg" onclick="endTest()">End the test</button>
         </div>
 
-        <script src="script.js"></script>
-        <script src="chineseTest.js"></script>
+        <div id="answer" style="display: none"></div>
+
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="chineseTest.js" defer></script>
     </body>
 </html>

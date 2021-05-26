@@ -5,6 +5,35 @@ document.getElementById('subInstruction').style.display = 'none';
 document.getElementById('btnGetNewWord').style.display = 'none';
 document.getElementById('chineseTest').style.display = 'none';
 document.getElementById('btnEndTest').style.display = 'none';
+document.getElementById('inputArea').style.display = 'none';
+
+var canvas = new handwriting.Canvas(document.getElementById('canvas'), 3);
+var width = document.getElementById("instruction").clientWidth;
+canvas.cxt.canvas.width  = width < 400 ? width : 400;
+canvas.cxt.canvas.height = width < 400 ? width : 400;
+canvas.setCallBack(function(data, err) {
+    if (err) {
+        throw err;
+    } else {
+        var answer = document.getElementById('answer').innerHTML;
+        if (data[0] == answer) {
+            document.getElementById("result").innerHTML = `<span style="color: blue">Good job!</span> The answer is: <span style="color: blue">${answer}</span>`;
+        } else {
+            document.getElementById("result").innerHTML = `<span style="color: red">Wrong...</span> Wanna try again?`;
+        }
+    }
+});
+canvas.set_Undo_Redo(true, true);
+var penSize = document.getElementById("penSize");
+penSize.addEventListener("mousemove", function() {
+    document.getElementById("lineWidth").innerHTML = penSize.value;
+});
+penSize.addEventListener("change", function(){
+    canvas.setLineWidth(penSize.value);
+});
+
+
+
 function startTest(){
     var resultSummary = "";
     testCharArr = [];
@@ -16,7 +45,7 @@ function startTest(){
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
-    document.getElementById('btnGetNewWord').focus();
+    document.getElementById('inputArea').style.display = 'block';
     getNewWord();
 }
 function continueTest(){
@@ -27,7 +56,7 @@ function continueTest(){
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
-    document.getElementById('btnGetNewWord').focus();
+    document.getElementById('inputArea').style.display = 'block';
     getNewWord();
 }
 function endTest(){
@@ -38,6 +67,7 @@ function endTest(){
     document.getElementById('chineseTest').style.display = 'none';
     document.getElementById('btnGetNewWord').style.display = 'none';
     document.getElementById('btnEndTest').style.display = 'none';
+    document.getElementById('inputArea').style.display = 'none';
     document.getElementById('btnStartTest').style.display = 'block';
     if (charsToTest.length != 0) {
         document.getElementById('btnContinueTest').style.display = 'block';
@@ -82,6 +112,7 @@ function getNewWord() {
         // Randomly select a Chinese character from the dictinary
         var tmpCharIndex = Math.floor(Math.random() * charsToTest.length);
         var testChar = charsToTest[tmpCharIndex].char;
+        document.getElementById('answer').innerHTML = testChar;
         // Save the test characters in a list
         testCharArr.push(testChar);
         // Get all the phrases containing the test character
