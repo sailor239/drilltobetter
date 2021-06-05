@@ -63,7 +63,7 @@
             <div class="btn-group" role="group">
                 <button id="btnGetNewWord" class="btn btn-success btn-lg" onclick="getNewWord()">Next</button>
             </div>
-            <canvas id="canvas" width="200" height="200"></canvas>
+            <canvas id="canvas" width="300" height="300"></canvas>
 
             <div class="btn-group" role="group">
                 <button id="erase" class="btn btn-danger" onclick="canvas.erase();">Erase</button>
@@ -79,7 +79,10 @@
         </div>
 
         <div class="btn-group" role="group">
-            <button id="btnEndTest" class="btn btn-dark btn-lg" onclick="endTest()">End the test</button>
+            <button style="display: none;" id="btnCheckAnswer" class="btn btn-info btn-lg" onclick="checkAnswer()">Answer</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnEndTest" class="btn btn-warning btn-lg" onclick="endTest()">End test</button>
         </div>
 
         <div id="answer" style="display: none"></div>

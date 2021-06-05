@@ -1,7 +1,6 @@
 var dict = JSON.parse(window.dict);
 document.getElementById('btnStartTest').focus();
 document.getElementById('btnContinueTest').style.display = 'none';
-// document.getElementById('subInstruction').style.display = 'none';
 document.getElementById('btnGetNewWord').style.display = 'none';
 document.getElementById('chineseTest').style.display = 'none';
 document.getElementById('btnEndTest').style.display = 'none';
@@ -39,9 +38,9 @@ function startTest(){
     document.getElementById('instruction').innerHTML = 'Write the <span id="charToTest"> red </span>character in Chinese';
     document.getElementById('btnStartTest').style.display = 'none';
     document.getElementById('btnContinueTest').style.display = 'none';
-    // document.getElementById('subInstruction').style.display = 'block';
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
+    document.getElementById('btnCheckAnswer').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
     document.getElementById('inputArea').style.display = 'block';
     getNewWord();
@@ -50,20 +49,23 @@ function continueTest(){
     document.getElementById('instruction').innerHTML = 'Write the <span id="charToTest"> red </span>character in Chinese';
     document.getElementById('btnStartTest').style.display = 'none';
     document.getElementById('btnContinueTest').style.display = 'none';
-    // document.getElementById('subInstruction').style.display = 'block';
     document.getElementById('btnGetNewWord').style.display = 'block';
     document.getElementById('chineseTest').style.display = 'block';
+    document.getElementById('btnCheckAnswer').style.display = 'block';
     document.getElementById('btnEndTest').style.display = 'block';
     document.getElementById('inputArea').style.display = 'block';
     getNewWord();
+}
+function checkAnswer() {
+    document.getElementById("result").innerHTML = '<h2><span style="color: green">' + document.getElementById('answer').innerHTML + '</span></h2>';
 }
 function endTest(){
     btnStartTest.innerHTML = "Re-Start?";
     instruction.innerHTML = resultSummary;
     document.getElementById('instruction').style.display = 'block';
-    // document.getElementById('subInstruction').style.display = 'none';
     document.getElementById('chineseTest').style.display = 'none';
     document.getElementById('btnGetNewWord').style.display = 'none';
+    document.getElementById('btnCheckAnswer').style.display = 'none';
     document.getElementById('btnEndTest').style.display = 'none';
     document.getElementById('inputArea').style.display = 'none';
     document.getElementById('btnStartTest').style.display = 'block';
@@ -99,6 +101,7 @@ var dictChinesePhrase = [
 function getNewWord() {
     document.getElementById("erase").click();
     document.getElementById("result").innerHTML = '';
+    document.getElementById('answer').style.display = 'none';
     var outputStr = '';
     // Check if there is any character left for test
     if (charsToTest.length == 0) {
@@ -108,7 +111,6 @@ function getNewWord() {
         document.getElementById('btnEndTest').style.display = 'block';
         document.getElementById('btnEndTest').focus();
     } else {
-        // alert(JSON.stringify(charsToTest));
         // Randomly select a Chinese character from the dictinary
         var tmpCharIndex = Math.floor(Math.random() * charsToTest.length);
         var testChar = charsToTest[tmpCharIndex].char;

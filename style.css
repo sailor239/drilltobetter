@@ -2,6 +2,10 @@
     margin-right: 40px;
 }
 
+#btnCheckAnswer {
+    margin-right: 10px;
+}
+
 #btnStartTest, #btnContinueTest {
     padding-left: 50px;
     padding-right: 50px;
